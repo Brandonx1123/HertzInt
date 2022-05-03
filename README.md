@@ -6,7 +6,7 @@ Install PostgresSQL
 
 Install Dependencies:
 
-Navigate (cd) to each client and server directory and run "npm i " in terminal to install dependencies
+Navigate (cd) to each client and server directory and run " npm i " in terminal to install dependencies
 
 <hr> </hr>
 
@@ -17,7 +17,7 @@ launch postgress through pgadmin4 and create a database called todos.
 
 Make Sure a Database is running:
 
-in a server terminal: run npm run db (to populate database with tables from our server)
+in a server terminal: write: "npm run db" (to populate database with tables from our server)
 <hr> </hr>
 
 Run the Project:
