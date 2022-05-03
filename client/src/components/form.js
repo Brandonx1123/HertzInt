@@ -1,13 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import ViewTodo from './viewTodo';
-import { SERVER } from './constants';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import ViewTodo from "./viewTodo";
+import { SERVER } from "./constants";
 
-export default function Form({ todos, user, updateTodos }) {
-  const [todoText, setTodoText] = useState('');
+export default function Form({ user }) {
+  const [todoText, setTodoText] = useState("");
+  const [todos, setTodos] = useState([]);
   const push = useNavigate();
 
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  const fetchTodos = async () => {
+    await axios
+      .get(`${SERVER}/todos/${user}`)
+      .then((res) => {
+        setTodos(res.data);
+      })
+      .catch((err) => {
+        console.log("Error getting all todos", err);
+      });
+  };
+
+  // const updateTodos = (removedId) => {
+  //   const updatedTodos = todos.filter((todo) => todo.id !== removedId);
+  //   setTodos(updatedTodos);
+  // };
   const addTodo = (evt) => {
     evt.preventDefault();
     const newTodo = {
@@ -18,7 +38,7 @@ export default function Form({ todos, user, updateTodos }) {
     axios
       .post(`${SERVER}/todos`, newTodo)
       .then((res) => {
-        updateTodos();
+        fetchTodos(); //this is for UI purposes so the state is updated without refreshing
       })
       .catch((err) => {
         console.log(err);
@@ -35,10 +55,10 @@ export default function Form({ todos, user, updateTodos }) {
             key={i}
             id={todo.id}
             isCompleted={todo.completed}
-            desc={todo.todos}
+            todoText={todo.todos}
             push={push}
             user={user}
-            updateTodos={updateTodos}
+            fetchTodos={fetchTodos}
           />
         );
       })}
@@ -48,11 +68,10 @@ export default function Form({ todos, user, updateTodos }) {
         <input
           value={todoText}
           onChange={(e) => setTodoText(e.target.value)}
-          type='text'
+          type="text"
         ></input>
-        <button type='submit'>Add</button>
+        <button type="submit">Add</button>
       </form>
-      <button type='submit'>Delete</button>
     </div>
   );
 }

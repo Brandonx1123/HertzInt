@@ -1,34 +1,30 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { SERVER } from './constants';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { SERVER } from "./constants";
+import styled from "styled-components";
 
-function ViewTodo({ desc, isCompleted, user, id, updateTodos }) {
+function ViewTodo({ todoText, isCompleted, user, id, fetchTodos }) {
   const [completed, setCompleted] = useState(isCompleted);
-  const [newDesc, setDesc] = useState(desc);
+  const [todoDescription, setTodoDescription] = useState(todoText);
   const [message, setMessage] = useState(null);
-
-  //   useEffect(() => {
-  //     setCompleted(isCompleted);
-  //     setDesc(desc);
-  //   }, []);
 
   const editTodo = (evt) => {
     evt.preventDefault();
     const editTodo = {
       id: id,
       completed,
-      todos: newDesc,
+      todos: todoDescription,
       user: user,
     };
 
     axios
       .put(`${SERVER}/todos/${user}`, editTodo)
       .then((res) => {
-        setMessage('Succesfully updated');
-        updateTodos();
+        setMessage("Succesfully updated");
+        fetchTodos();
       })
       .catch((err) => {
-        setMessage('Error in updating');
+        setMessage("Error in updating");
         console.log(err);
       });
   };
@@ -38,11 +34,11 @@ function ViewTodo({ desc, isCompleted, user, id, updateTodos }) {
     axios
       .delete(`${SERVER}/todos/${id}`)
       .then((res) => {
-        setMessage('Succesfully deleted');
-        updateTodos();
+        setMessage("Succesfully deleted");
+        fetchTodos();
       })
       .catch((err) => {
-        setMessage('Error in deleting');
+        setMessage("Error in deleting");
         console.log(err);
       });
   };
@@ -51,28 +47,30 @@ function ViewTodo({ desc, isCompleted, user, id, updateTodos }) {
     <div>
       <div>
         <input
-          value={newDesc}
-          onChange={(e) => setDesc(e.target.value)}
+          value={todoDescription}
+          onChange={(e) => setTodoDescription(e.target.value)}
         ></input>
-        <label className='container'>
+        <label className="container">
           Is Completed
           <input
-            type='checkbox'
+            type="checkbox"
             defaultChecked={completed}
-            onClick={(e) => setCompleted(e.target.value)}
+            onClick={(e) => setCompleted(e.target.checked)}
           />
-          <span className='checkmark'></span>
+          <span className="checkmark"></span>
         </label>
-        <button onClick={editTodo} type='submit'>
+        <button onClick={editTodo} type="submit">
           Edit
         </button>
-        <button onClick={deleteTodo} type='submit'>
+        <button onClick={deleteTodo} type="submit">
           Delete
         </button>
       </div>
-      {/* {message} */}
+      {message}
     </div>
   );
 }
+
+const Container = styled.div``;
 
 export default ViewTodo;

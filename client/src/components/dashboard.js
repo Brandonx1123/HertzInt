@@ -1,44 +1,26 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { SERVER } from "./constants";
+import React from "react";
 import Form from "./form";
 import Header from "./header";
+import styled from "styled-components";
 
-function Todo() {
-  const [todos, setTodos] = useState([]);
-  const [updatedTodos, setUpdate] = useState(false);
+function Dashboard() {
   const authUser = sessionStorage.getItem("id");
 
-  useEffect(() => {
-    fetchTodos();
-  }, [updatedTodos]);
-
-  const fetchTodos = async () => {
-    await axios
-      .get(`${SERVER}/todos/${authUser}`)
-      .then((res) => {
-        setTodos(res.data);
-      })
-      .catch((err) => {
-        console.log("Error getting all todos", err);
-      });
-  };
-
-  // const updateTodos = (removedId) => {
-  //   const updatedTodos = todos.filter((todo) => todo.id !== removedId);
-  //   setTodos(updatedTodos);
-  // };
-
-  const updateState = () => {
-    fetchTodos();
-  };
+  //user id is stored in local storage and i will use that to make sure
+  //they are getting their todos in the dashboard
 
   return (
-    <div className="allTodos">
+    <DashboardContainer>
       <Header />
-      <Form todos={todos} user={authUser} updateTodos={updateState} />
-    </div>
+      <Form user={authUser} />
+    </DashboardContainer>
   );
 }
 
-export default Todo;
+const DashboardContainer = styled.section`
+  display: flex;
+  justify-content: center;
+  width: 50%;
+`;
+
+export default Dashboard;

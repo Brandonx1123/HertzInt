@@ -41,6 +41,7 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   Todo.updatetodos(req.body.id, req.body) // <--- must pass in req.body ad id
     .then((updatedTodo) => {
+      console.log({ updatedTodo });
       res.status(200).json(updatedTodo);
     })
     .catch(() => {
