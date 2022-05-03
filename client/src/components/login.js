@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { SERVER } from './constants';
-import './formStyling.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import styled from "styled-components";
+import { SERVER } from "./constants";
+import "./formStyling.css";
 
 const initialFormValues = {
-  username: '',
+  username: "",
 };
 
 function Login() {
@@ -23,10 +23,10 @@ function Login() {
     axios
       .post(`${SERVER}/users/login`, form)
       .then((res) => {
-        sessionStorage.setItem('id', res.data.id);
-        sessionStorage.setItem('username', res.data.username);
+        sessionStorage.setItem("id", res.data.id);
+        sessionStorage.setItem("username", res.data.username);
         // setForm(res.data);
-        push('/dashboard');
+        push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
@@ -34,51 +34,38 @@ function Login() {
   };
 
   return (
-    <form className='SignInContainer' onSubmit={onSubmit}>
-      <div className='FormContainer'>
+    <form className="SignInContainer" onSubmit={onSubmit}>
+      <div className="FormContainer">
         <header>
           <h1>Sign In!</h1>
         </header>
-        <section className='info'>
+        <section className="info">
           <div>
             <HomeLink>
-              <Link to='/'>Todo-Home</Link>
+              <Link to="/">Todo-Home</Link>
             </HomeLink>
           </div>
 
-          <label className='username'>
+          <label className="username">
             <h4>Username</h4>
             <input
-              className='inputBox'
-              name='username'
-              type='text'
+              className="inputBox"
+              name="username"
+              type="text"
               onChange={onChange}
               value={form.username}
-              placeholder='type a username...'
-              maxLength=''
+              placeholder="type a username..."
+              maxLength=""
             />
           </label>
-
-          {/* <label className="password">
-            <h4>Password</h4>
-            <input
-              className="inputBox"
-              name="password"
-              type="password"
-              onChange={onChange}
-              value={form.password}
-              placeholder="type a password..."
-              maxLength="30"
-            />
-          </label> */}
-          <div className='submit'>
-            <button className='button' disabled={!form.username}>
+          <div className="submit">
+            <button className="button" disabled={!form.username}>
               submit
             </button>
           </div>
           <div>
             <NotWith>
-              Not with us? <Link to='/register'>Create an Account</Link>
+              Not with us? <Link to="/register">Create an Account</Link>
             </NotWith>
           </div>
         </section>
@@ -88,7 +75,7 @@ function Login() {
 }
 
 const NotWith = styled.p`
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   margin-top: -50px;
@@ -96,7 +83,7 @@ const NotWith = styled.p`
 `;
 
 const HomeLink = styled.p`
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 `;
 
 export default Login;

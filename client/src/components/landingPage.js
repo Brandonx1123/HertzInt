@@ -1,28 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import "./landingPage.css";
 
 function landingPage() {
   return (
-    <div>
-      <h1>Hertz Todo Application</h1>
-      <br></br>
-      <p> Creating Todos Has Never Been So Easy!</p>
-      <br></br>
-      <TopLink to="/register">Sign Up</TopLink>
-      <TopLink to="/login">Log In</TopLink>
+    <div className="landingContainer">
+      <div className="mainContainer">
+        <header>Hertz Todo Application</header>
+        <br></br>
+        <div className="infoContainer">
+          <h1> Creating Todos Has Never Been So Easy!</h1>
+          <br></br>
+          <div className="linkContainer">
+            <TopLink to="/register">Sign Up</TopLink>
+            <TopLink to="/login">Log In</TopLink>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 const TopLink = styled(Link)`
-  text-decoration: none;
-  margin-right: 35px;
-  font-weight: 700;
-  color: black;
-  font-size: 1.2rem;
-  border: 1px solid black;
-  border-radius: 90%;
+  background: linear-gradient(0.45turn, #00a3cc, #00627a);
+  border-radius: 15px;
+  border: none;
+  padding: 2%;
+  margin: 0 auto;
+  width: 20%;
+  font-weight: 900;
+  color: white;
 `;
 
 export default landingPage;

@@ -13,5 +13,3 @@ const formSchema = yup.object().shape({
 });
 
 export default formSchema;
-
-//if you wanted to add a password, code is there

@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { SERVER } from './constants';
-import Form from './form';
-import Header from './header';
-import Login from './login';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { SERVER } from "./constants";
+import Form from "./form";
+import Header from "./header";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
   const [updatedTodos, setUpdate] = useState(false);
-  const authUser = sessionStorage.getItem('id');
+  const authUser = sessionStorage.getItem("id");
 
   useEffect(() => {
     fetchTodos();
@@ -21,7 +20,7 @@ function Todo() {
         setTodos(res.data);
       })
       .catch((err) => {
-        console.log('Error getting all todos', err);
+        console.log("Error getting all todos", err);
       });
   };
 
@@ -35,7 +34,7 @@ function Todo() {
   };
 
   return (
-    <div className='allTodos'>
+    <div className="allTodos">
       <Header />
       <Form todos={todos} user={authUser} updateTodos={updateState} />
     </div>
