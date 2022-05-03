@@ -21,4 +21,5 @@ in a server terminal: write: "npm run db" (to populate database with tables from
 <hr> </hr>
 
 Run the Project:
+<br> </br>
 create two separate terminals for each client and directory: then run npm start.
