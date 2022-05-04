@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ViewTodo from "./viewTodo";
 import { SERVER } from "./constants";
+import styled from "styled-components";
 
 export default function Form({ user }) {
   const [todoText, setTodoText] = useState("");
@@ -46,9 +47,8 @@ export default function Form({ user }) {
   };
 
   return (
-    <div>
-      <p>Current Todos</p>
-      <hr />
+    <TodoContainer>
+      <CurrentHeading> Your Current Tasks:</CurrentHeading>
       {todos.map((todo, i) => {
         return (
           <ViewTodo
@@ -63,15 +63,33 @@ export default function Form({ user }) {
         );
       })}
       <br />
-      <hr />
+      <hr></hr>
       <form onSubmit={addTodo}>
-        <input
-          value={todoText}
-          onChange={(e) => setTodoText(e.target.value)}
-          type="text"
-        ></input>
+        <label>
+          <span>Add a task: </span>
+          <input
+            value={todoText}
+            onChange={(e) => setTodoText(e.target.value)}
+            type="text"
+          ></input>
+        </label>
         <button type="submit">Add</button>
       </form>
-    </div>
+    </TodoContainer>
   );
 }
+
+const TodoContainer = styled.div`
+  border: 1px solid black;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 50%;
+  padding: 2%;
+  text-align: center;
+  background: linear-gradient(0.95turn, #dfdfdf, #f6f6f648);
+`;
+
+const CurrentHeading = styled.h2`
+  text-decoration: underline;
+  font-weight: 900;
+`;

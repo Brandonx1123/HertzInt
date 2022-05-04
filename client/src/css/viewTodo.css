@@ -2,3 +2,7 @@ input[type="checkbox"]:checked + label {
   color: red;
   text-decoration: line-through;
 }
+
+input {
+  margin-right: 4px;
+}

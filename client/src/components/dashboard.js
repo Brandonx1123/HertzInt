@@ -19,6 +19,7 @@ function Dashboard() {
 
 const DashboardContainer = styled.section`
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   text-align: center;

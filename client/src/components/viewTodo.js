@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { SERVER } from "./constants";
 import styled from "styled-components";
@@ -46,7 +46,7 @@ function ViewTodo({ todoText, isCompleted, user, id, fetchTodos }) {
 
   return (
     <div>
-      <div>
+      <Container>
         <input
           id="inputBox"
           value={todoDescription}
@@ -67,12 +67,17 @@ function ViewTodo({ todoText, isCompleted, user, id, fetchTodos }) {
         <button onClick={deleteTodo} type="submit">
           Delete
         </button>
-      </div>
+      </Container>
       {message}
     </div>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3% auto 0 auto;
+`;
 
 export default ViewTodo;
