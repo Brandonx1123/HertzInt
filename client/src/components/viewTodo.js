@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { SERVER } from "./constants";
 import styled from "styled-components";
+import "../css/viewTodo.css";
 
 function ViewTodo({ todoText, isCompleted, user, id, fetchTodos }) {
   const [completed, setCompleted] = useState(isCompleted);
@@ -47,11 +48,12 @@ function ViewTodo({ todoText, isCompleted, user, id, fetchTodos }) {
     <div>
       <div>
         <input
+          id="inputBox"
           value={todoDescription}
           onChange={(e) => setTodoDescription(e.target.value)}
         ></input>
-        <label className="container">
-          Is Completed
+        <label className="completed">
+          Finished?
           <input
             type="checkbox"
             defaultChecked={completed}

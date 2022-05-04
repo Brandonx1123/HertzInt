@@ -1,34 +1,24 @@
-body {
-  justify-content: center;
-  margin-left: 0;
-}
 .landingContainer {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  width: 45%;
-  margin: 8% auto 0 auto;
+  width: 65%;
+  border-radius: 20px;
+  margin: 20% auto 0 auto;
 }
-.mainContainer {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  width: 60%;
-  margin: 8% auto 0 auto;
-}
+
 header {
   background: linear-gradient(0.45turn, #6cb2a0, #468677);
   color: white;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   text-align: center;
-  padding: 2%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 h1 {
   text-shadow: 2px 2px 4px black;
+  text-decoration: underline;
 }
 .infoContainer {
   background: linear-gradient(0.95turn, #dfdfdf, #f6f6f648);
@@ -43,6 +33,6 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 5%;
-  padding-top: 5%;
+  padding-top: 3%;
   padding-bottom: 10%;
 }

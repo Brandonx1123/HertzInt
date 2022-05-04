@@ -1,21 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import "./landingPage.css";
+import "../css/landingPage.css";
 
 function landingPage() {
   return (
     <div className="landingContainer">
-      <div className="mainContainer">
-        <header>Hertz Todo Application</header>
+      <header>Hertz Todo Application</header>
+      <br></br>
+      <div className="infoContainer">
+        <h1> Creating Todos Has Never Been So Easy!</h1>
         <br></br>
-        <div className="infoContainer">
-          <h1> Creating Todos Has Never Been So Easy!</h1>
-          <br></br>
-          <div className="linkContainer">
-            <TopLink to="/register">Sign Up</TopLink>
-            <TopLink to="/login">Log In</TopLink>
-          </div>
+        <div className="linkContainer">
+          <TopLink to="/register">Sign Up</TopLink>
+          <TopLink to="/login">Log In</TopLink>
         </div>
       </div>
     </div>

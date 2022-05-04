@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./form";
+import Todo from "./todo";
 import Header from "./header";
 import styled from "styled-components";
 
@@ -12,15 +12,18 @@ function Dashboard() {
   return (
     <DashboardContainer>
       <Header />
-      <Form user={authUser} />
+      <Todo user={authUser} />
     </DashboardContainer>
   );
 }
 
 const DashboardContainer = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  width: 50%;
+  text-align: center;
+  width: 100%;
+  margin-top: 200px;
 `;
 
 export default Dashboard;

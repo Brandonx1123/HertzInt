@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { SERVER } from "./constants";
-import "./formStyling.css";
-
-const initialFormValues = {
-  username: "",
-};
+import "../css/formStyling.css";
 
 function Login() {
-  const [form, setForm] = useState(initialFormValues);
+  const [form, setForm] = useState("");
   const push = useNavigate();
 
   const onChange = (evt) => {
@@ -40,11 +36,7 @@ function Login() {
           <h1>Sign In!</h1>
         </header>
         <section className="info">
-          <div>
-            <HomeLink>
-              <Link to="/">Todo-Home</Link>
-            </HomeLink>
-          </div>
+          <TopLink to="/">Todo-Home</TopLink>
 
           <label className="username">
             <h4>Username</h4>
@@ -82,8 +74,13 @@ const NotWith = styled.p`
   padding: 0 0 20px 0;
 `;
 
-const HomeLink = styled.p`
-  font-family: "Roboto", sans-serif;
+const TopLink = styled(Link)`
+  background: linear-gradient(0.45turn, #00a3cc, #00627a);
+  border-radius: 15px;
+  padding: 1%;
+  margin: 0 auto;
+  font-weight: 200;
+  color: white;
 `;
 
 export default Login;
