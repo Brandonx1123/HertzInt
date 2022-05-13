@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/landingPage.js";
 import Login from "./components/login.js";
 import Register from "./components/register";
-import Todo from "./components/dashboard";
+import Dashboard from "./components/dashboard";
 import PrivateRoute from "./components/auth/privateRoute";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route element={<PrivateRoute />}>
-            <Route path="/dashboard" element={<Todo />}></Route>
+            <Route path="/dashboard" element={<Dashboard />}></Route>
           </Route>
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/register" element={<Register />}></Route>

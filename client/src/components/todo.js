@@ -49,6 +49,7 @@ export default function Form({ user }) {
   return (
     <TodoContainer>
       <CurrentHeading> Your Current Tasks:</CurrentHeading>
+
       {todos.map((todo, i) => {
         return (
           <ViewTodo

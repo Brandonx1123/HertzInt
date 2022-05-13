@@ -47,7 +47,7 @@ function Register() {
   const onSubmit = (evt) => {
     evt.preventDefault();
     axios
-      .post("http://localhost:5000/users/register", form)
+      .post("http://localhost:4000/users/register", form)
       .then((res) => {
         console.log("RES IN POST IS HERE", res);
         setForm(res);

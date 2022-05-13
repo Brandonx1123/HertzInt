@@ -6,7 +6,7 @@ import styled from "styled-components";
 function Dashboard() {
   const authUser = sessionStorage.getItem("id");
 
-  //user id is stored in local storage and i will use that to make sure
+  //user id is stored in  sessionStorage and i will use that to make sure
   //they are getting their todos in the dashboard
 
   return (
