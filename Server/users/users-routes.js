@@ -35,6 +35,7 @@ router.post("/register", (req, res) => {
     Users.add(credentials)
       .then((user) => {
         // user is the response here
+        console.log("successful sign-up congrats!");
         res.status(201).json(user);
       })
       .catch(() => {
