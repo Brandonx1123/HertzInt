@@ -20,8 +20,11 @@ function ViewTodo({ todoText, isCompleted, user, id, fetchTodos }) {
 
     axios
       .put(`${SERVER}/todos/${user}`, editTodo)
-      .then((res) => {
-        setMessage("Succesfully updated");
+      .then(() => {
+        setMessage("Succesfully Updated");
+        setTimeout(() => {
+          setMessage("");
+        }, 4000);
         fetchTodos();
       })
       .catch((err) => {
@@ -35,7 +38,10 @@ function ViewTodo({ todoText, isCompleted, user, id, fetchTodos }) {
     axios
       .delete(`${SERVER}/todos/${id}`)
       .then((res) => {
-        setMessage("Succesfully deleted");
+        setMessage("Succesfully Deleted");
+        setTimeout(() => {
+          setMessage("");
+        }, 4000);
         fetchTodos();
       })
       .catch((err) => {

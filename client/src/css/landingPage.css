@@ -3,9 +3,8 @@
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  width: 65%;
-  border-radius: 20px;
-  margin: 20% auto 0 auto;
+  width: 60%;
+  margin: 10% auto 0 auto;
 }
 
 header {

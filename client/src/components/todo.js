@@ -40,6 +40,7 @@ export default function Form({ user }) {
       .post(`${SERVER}/todos`, newTodo)
       .then((res) => {
         fetchTodos(); //this is for UI purposes so the state is updated without refreshing
+        setTodoText("");
       })
       .catch((err) => {
         console.log(err);

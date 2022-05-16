@@ -3,6 +3,7 @@ import formSchema from "./formSchema";
 import * as yup from "yup";
 import "../css/formStyling.css";
 import axios from "axios";
+import { SERVER } from "./constants";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -47,7 +48,7 @@ function Register() {
   const onSubmit = (evt) => {
     evt.preventDefault();
     axios
-      .post("http://localhost:4000/users/register", form)
+      .post(`${SERVER}/users/register`, form)
       .then((res) => {
         console.log("RES IN POST IS HERE", res);
         setForm(res);
@@ -63,8 +64,8 @@ function Register() {
   }, [form]);
 
   return (
-    <form className="formContainer" onSubmit={onSubmit}>
-      <div className="FormGroupInputs">
+    <form className="SignInContainer" onSubmit={onSubmit}>
+      <div>
         <header>
           <h1>Sign Up Now!</h1>
         </header>
@@ -119,6 +120,7 @@ function Register() {
 const NotWith = styled.p`
   font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
+  border: 1px solid white;
   font-weight: 500;
   margin-top: -50px;
   padding: 0 0 20px 0;
